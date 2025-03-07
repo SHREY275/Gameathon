@@ -1,0 +1,17 @@
+# Use an official Python image as the base
+FROM python:3.12.5
+
+# Set the working directory inside the container
+WORKDIR /app
+
+# Copy files into container
+COPY dataset /app/dataset
+COPY app.py /app/app.py
+COPY requirements.txt /app/requirements.txt
+
+RUN pip install --no-cache-dir -r requirements.txt
+
+EXPOSE 5000
+
+ENTRYPOINT ["python"]
+CMD ["app.py"]
